@@ -1,0 +1,10 @@
+services:
+  terraform:
+    container_name: terraform
+    image: hashicorp/terraform:${DOCKER_TERRAFORM_VERSION}
+    env_file:
+      - .env
+    volumes:
+      - ./src:/src
+    working_dir: /src
+    tty: true
