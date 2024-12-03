@@ -18,12 +18,3 @@ provider "aws" {
   profile = "hiyoko-terraform"
   region  = "ap-northeast-1"
 }
-
-variable "project" {
-  type = string
-}
-
-variable "environment" {
-  type = string
-}
-

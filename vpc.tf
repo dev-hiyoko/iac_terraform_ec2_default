@@ -1,6 +1,6 @@
 # TODO narikawa 全体的何これ
 resource "aws_vpc" "vpc" {
-  cidr_block                       = "10.0.0.0/16"
+  cidr_block                       = var.vpc_cidr
   instance_tenancy                 = "default"
   enable_dns_support               = true
   enable_dns_hostnames             = true
@@ -13,3 +13,58 @@ resource "aws_vpc" "vpc" {
   }
 }
 
+resource "aws_subnet" "public_subnet_a" {
+  vpc_id                  = aws_vpc.vpc.id
+  availability_zone       = var.availability_zone["a"]
+  cidr_block              = var.subnets_cidr["public_a"]
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name    = "${var.project}-${var.environment}-public-subnet-a"
+    Project = var.project
+    Env     = var.environment
+    Type    = "public"
+  }
+}
+
+resource "aws_subnet" "public_subnet_c" {
+  vpc_id                  = aws_vpc.vpc.id
+  availability_zone       = var.availability_zone["c"]
+  cidr_block              = var.subnets_cidr["public_c"]
+  map_public_ip_on_launch = true
+
+  tags = {
+    Name    = "${var.project}-${var.environment}-public-subnet-c"
+    Project = var.project
+    Env     = var.environment
+    Type    = "public"
+  }
+}
+
+resource "aws_subnet" "private_subnet_a" {
+  vpc_id                  = aws_vpc.vpc.id
+  availability_zone       = var.availability_zone["a"]
+  cidr_block              = var.subnets_cidr["private_a"]
+  map_public_ip_on_launch = false
+
+  tags = {
+    Name    = "${var.project}-${var.environment}-private-subnet-a"
+    Project = var.project
+    Env     = var.environment
+    Type    = "private"
+  }
+}
+
+resource "aws_subnet" "private_subnet_c" {
+  vpc_id                  = aws_vpc.vpc.id
+  availability_zone       = var.availability_zone["c"]
+  cidr_block              = var.subnets_cidr["private_c"]
+  map_public_ip_on_launch = false
+
+  tags = {
+    Name    = "${var.project}-${var.environment}-private-subnet-c"
+    Project = var.project
+    Env     = var.environment
+    Type    = "private"
+  }
+}
