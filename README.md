@@ -19,3 +19,13 @@ make git/commit-template
 - [terraform provider](https://registry.terraform.io/browse/providers)
 - [ブランチルール](./docs/git/branch.md)
 - [コミットルール](./docs/git/commit.md)
+
+## 覚書
+
+手順（各種それぞれの役割については、別途調べる必要がありそう）
+
+1. terraform
+2. vpc + subnet
+3. route table + route table association
+4. internet gateway
+5. security group

@@ -1,5 +1,8 @@
 # TODO narikawa 全体的何これ
-resource "aws_vpc" "vpc" {
+# ====================================================
+# VPC
+# ====================================================
+resource "aws_vpc" "main" {
   cidr_block                       = var.vpc_cidr
   instance_tenancy                 = "default"
   enable_dns_support               = true
@@ -7,14 +10,17 @@ resource "aws_vpc" "vpc" {
   assign_generated_ipv6_cidr_block = false
 
   tags = {
-    Name    = "${var.project}-${var.environment}-vpc"
+    Name    = "${var.project}-${var.environment}-vpc-main"
     Project = var.project
     Env     = var.environment
   }
 }
 
+# ====================================================
+# Subnet (public)
+# ====================================================
 resource "aws_subnet" "public_subnet_a" {
-  vpc_id                  = aws_vpc.vpc.id
+  vpc_id                  = aws_vpc.main.id
   availability_zone       = var.availability_zone["a"]
   cidr_block              = var.subnets_cidr["public_a"]
   map_public_ip_on_launch = true
@@ -28,7 +34,7 @@ resource "aws_subnet" "public_subnet_a" {
 }
 
 resource "aws_subnet" "public_subnet_c" {
-  vpc_id                  = aws_vpc.vpc.id
+  vpc_id                  = aws_vpc.main.id
   availability_zone       = var.availability_zone["c"]
   cidr_block              = var.subnets_cidr["public_c"]
   map_public_ip_on_launch = true
@@ -41,8 +47,11 @@ resource "aws_subnet" "public_subnet_c" {
   }
 }
 
+# ====================================================
+# Subnet (private)
+# ====================================================
 resource "aws_subnet" "private_subnet_a" {
-  vpc_id                  = aws_vpc.vpc.id
+  vpc_id                  = aws_vpc.main.id
   availability_zone       = var.availability_zone["a"]
   cidr_block              = var.subnets_cidr["private_a"]
   map_public_ip_on_launch = false
@@ -56,7 +65,7 @@ resource "aws_subnet" "private_subnet_a" {
 }
 
 resource "aws_subnet" "private_subnet_c" {
-  vpc_id                  = aws_vpc.vpc.id
+  vpc_id                  = aws_vpc.main.id
   availability_zone       = var.availability_zone["c"]
   cidr_block              = var.subnets_cidr["private_c"]
   map_public_ip_on_launch = false
