@@ -1,0 +1,12 @@
+[
+  {
+    "name": "hiyoko",
+    "environment": "develop",
+    "dir": "./aws/services/hiyoko/develop"
+  },
+  {
+    "name": "hiyoko",
+    "environment": "staging",
+    "dir": "./aaws/services/hiyoko/staging"
+  }
+]
