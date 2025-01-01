@@ -14,12 +14,12 @@ resource "aws_route_table" "public_rt" {
 
 resource "aws_route_table_association" "public_rt_a" {
   route_table_id = aws_route_table.public_rt.id
-  subnet_id      = module.vpc_main.public_subnet_ids_by_az["a"]
+  subnet_id      = module.vpc_main.public_subnet_ids_by_az[var.availability_zone["a"]]
 }
 
 resource "aws_route_table_association" "public_rt_c" {
   route_table_id = aws_route_table.public_rt.id
-  subnet_id      = module.vpc_main.public_subnet_ids_by_az["c"]
+  subnet_id      = module.vpc_main.public_subnet_ids_by_az[var.availability_zone["c"]]
 }
 
 # ====================================================
@@ -38,12 +38,12 @@ resource "aws_route_table" "private_rt" {
 
 resource "aws_route_table_association" "private_rt_a" {
   route_table_id = aws_route_table.private_rt.id
-  subnet_id      = module.vpc_main.private_subnet_ids_by_az["a"]
+  subnet_id      = module.vpc_main.private_subnet_ids_by_az[var.availability_zone["a"]]
 }
 
 resource "aws_route_table_association" "private_rt_c" {
   route_table_id = aws_route_table.private_rt.id
-  subnet_id      = module.vpc_main.private_subnet_ids_by_az["c"]
+  subnet_id      = module.vpc_main.private_subnet_ids_by_az[var.availability_zone["c"]]
 }
 
 # ====================================================
