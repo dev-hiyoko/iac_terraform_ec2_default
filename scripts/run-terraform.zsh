@@ -4,8 +4,8 @@ source ~/.zshrc
 
 # 使用方法
 usage() {
-  echo "Usage: $0 <command> <service> <environment>"
-  echo "Example: $0 plan hiyoko develop"
+  echo "Usage: $0 <service> <environment> <command> [options...]"
+  echo "Example: $0 hiyoko develop plan -var-file=vars.tfvars"
   exit 1
 }
 
@@ -14,9 +14,12 @@ if [ $# -lt 3 ]; then
   usage
 fi
 
-COMMAND=$1
-SERVICE=$2
-ENVIRONMENT=$3
+SERVICE=$1
+ENVIRONMENT=$2
+COMMAND=$3
+shift 3
+EXTRA_OPTIONS="$@"
+
 WORK_DIR=$(pwd)
 
 # Terraform コマンドの絶対パス
@@ -44,6 +47,6 @@ fi
 
 # Terraform 実行
 cd $TARGET_DIR
-echo "Running 'terraform $COMMAND' in $TARGET_DIR"
+echo "Running 'terraform $COMMAND $EXTRA_OPTIONS' in $TARGET_DIR"
 terraform init -input=false
-terraform $COMMAND -input=false
+terraform $COMMAND -input=false $EXTRA_OPTIONS
