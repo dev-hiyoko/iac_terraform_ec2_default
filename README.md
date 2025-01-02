@@ -6,9 +6,9 @@ TODO: narikawa 構成図を作成する予定
 TODO: narikawa やりたいこと、nginx、php 環境を作成までやりたいが、php のバージョンアップが入った際等の対応方法について
 TODO: narikawa ソースコードは S3 管理になるのか？（PHP の場合でも、その場合の管理方法について）
 TODO: narikawa ソースコードにおいて、git で main にマージされた際にデプロイまで持っていきたい
-TODO: narikawa 本 git で pr 時には plan、マージ時には apply を実行したい
-TODO: narikawa aws 関連のサービスであった気がする ↑
-TODO: narikawa 複数環境の実装方法について(module、atlantis)
+TODO: narikawa 複数環境の実装方法について(atlantis)
+TODO: narikawa ローカル、gitactions の terraform のバージョン統一方法
+TODO: narikawa gitactions の追加（全環境に fmt を追加）
 TODO: narikawa gitactions の追加（全環境の plan を PR 時に実行「PR 更新時にも実行されるように」）
 TODO: narikawa gitactions の追加（本番以外の環境の apply を main に marge 時に実行）
 TODO: narikawa gitactions の追加（本番の環境の apply を手動で実行）
@@ -31,7 +31,15 @@ make init
 環境を作成する場合、service_environments.json に追加
 
 ```shell
-make terraform  <service name> <env> <terraform cmd> EXTRA="<terraform options>"
+make terraform <service name> <env> <terraform cmd> [EXTRA="<terraform options>"]
+```
+
+## コミット前確認
+
+fmt の実行
+
+```shell
+terraform fmt -recursive
 ```
 
 ## ドキュメント
