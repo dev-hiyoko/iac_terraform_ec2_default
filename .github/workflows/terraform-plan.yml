@@ -1,0 +1,37 @@
+name: Terraform Plan
+
+on:
+  pull_request:
+    branches:
+      - develop
+      - staging
+      - main
+
+jobs:
+  terraform-plan:
+    name: Terraform Plan
+    runs-on: ubuntu-latest
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Read Service Environments
+        id: read-environments
+        run: echo "envs=$(cat service_environments.json)" >> $GITHUB_ENV
+
+      - name: Run Terraform Plan for Each Directory
+        run: |
+          echo $envs | jq -c '.[]' | while read -r env; do
+            name=$(echo $env | jq -r '.name')
+            dir=$(echo $env | jq -r '.dir')
+
+            echo "Running Terraform Plan for $name in $dir"
+            cd $dir
+            terraform init
+            terraform plan
+            cd -
+          done
