@@ -28,6 +28,6 @@ terraform() {
         -v "$project_root:$project_root" \
         -v "$HOME/.aws:/root/.aws:ro" \
         -w "$work_dir" \
-        $docker_image "$@""
+        $docker_image $*"
 }
 ```
