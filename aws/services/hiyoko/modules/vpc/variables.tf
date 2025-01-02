@@ -15,16 +15,16 @@ variable "environment" {
 
 variable "public_subnets" {
   description = "List of public subnets with availability zones and CIDRs"
-  type        = list(object({
+  type = list(object({
     availability_zone = string
-    cidr             = string
+    cidr              = string
   }))
 }
 
 variable "private_subnets" {
   description = "List of private subnets with availability zones and CIDRs"
-  type        = list(object({
+  type = list(object({
     availability_zone = string
-    cidr             = string
+    cidr              = string
   }))
 }
