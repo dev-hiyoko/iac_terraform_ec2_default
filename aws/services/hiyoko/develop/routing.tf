@@ -42,7 +42,7 @@ resource "aws_route_table_association" "private_rt_a" {
 }
 
 resource "aws_route_table_association" "private_rt_c" {
-  route_table_id = aws_route_table.private_rt.id
+  route_table_id  = aws_route_table.private_rt.id
   subnet_id      = module.vpc_main.private_subnet_ids_by_az[var.availability_zone["c"]]
 }
 
