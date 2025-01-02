@@ -49,4 +49,4 @@ fi
 cd $TARGET_DIR
 echo "Running 'terraform $COMMAND $EXTRA_OPTIONS' in $TARGET_DIR"
 terraform init -input=false
-terraform $COMMAND -input=false $EXTRA_OPTIONS
+terraform $COMMAND $EXTRA_OPTIONS
