@@ -6,7 +6,6 @@ variable "project" {
 variable "environment" {
   description = "The environment (e.g., dev, prod)"
   type        = string
-
 }
 
 variable "vpc_cidr" {

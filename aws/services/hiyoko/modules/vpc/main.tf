@@ -50,4 +50,3 @@ resource "aws_subnet" "private" {
     Type    = "private"
   }
 }
-
