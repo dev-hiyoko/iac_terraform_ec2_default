@@ -15,6 +15,5 @@ terraform {
 # TODO: narikawa .envからregionを取得できない？
 # TODO: narikawa tfvarsはgit管理しない場合、どうやって生成する？（サンプルファイルでもおいておく？）
 provider "aws" {
-  profile = "hiyoko-terraform"
   region  = "ap-northeast-1"
 }
