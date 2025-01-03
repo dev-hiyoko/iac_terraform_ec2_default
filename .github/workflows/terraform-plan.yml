@@ -14,6 +14,9 @@ jobs:
 
     steps:
       - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.5.5
@@ -26,7 +29,9 @@ jobs:
         run: echo "envs=$(cat service_environments.json)" >> $GITHUB_ENV
 
       - name: Run Terraform Plan for Each Directory
+        id: terraform-plan
         run: |
+          PLAN_RESULTS=""
           echo $envs | jq -c '.[]' | while read -r env; do
             name=$(echo $env | jq -r '.name')
             dir=$(echo $env | jq -r '.dir')
@@ -34,6 +39,20 @@ jobs:
             echo "Running Terraform Plan for $name in $dir"
             cd $dir
             terraform init
-            terraform plan
+            PLAN_OUTPUT=$(terraform plan)
+            PLAN_RESULTS="${PLAN_RESULTS}\n\n# $name\n```\n${PLAN_OUTPUT}\n```"
             cd -
           done
+          echo "plan_results=${PLAN_RESULTS}" >> $GITHUB_ENV
+
+      - name: Post Plan Results to PR
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const planResults = process.env.plan_results || "No results available.";
+            github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.payload.pull_request.number,
+              body: `### Terraform Plan Results\n${planResults}`
+            });
