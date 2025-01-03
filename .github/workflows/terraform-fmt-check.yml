@@ -1,0 +1,27 @@
+name: Terraform Format Check
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
+jobs:
+  terraform-fmt:
+    name: Check Terraform Format
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.5.5
+      - name: Terraform Format Check
+        run: terraform fmt -check -recursive
+      - name: Display Error Message
+        if: failure()
+        run: echo "❌ Terraform files are not formatted correctly. Run 'terraform fmt -recursive' to fix them."
