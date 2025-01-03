@@ -26,7 +26,8 @@ jobs:
 
       - name: Read Service Environments
         id: read-environments
-        run: echo "envs=$(cat service_environments.json)" >> $GITHUB_ENV
+        run: |
+          echo "envs=$(cat service_environments.json | jq -c .)" >> $GITHUB_ENV
 
       - name: Run Terraform Plan for Each Directory
         id: terraform-plan
