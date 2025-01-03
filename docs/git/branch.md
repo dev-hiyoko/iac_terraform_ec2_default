@@ -1,5 +1,7 @@
 # Branch Rule
+
 [参考](https://nvie.com/posts/a-successful-git-branching-model/)
+
 ```text
 main
 └── develop: デフォルトブランチ
