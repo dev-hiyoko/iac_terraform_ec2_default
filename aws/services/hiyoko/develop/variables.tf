@@ -1,11 +1,13 @@
 variable "project" {
   description = "The project name"
   type        = string
+  default     = "hiyoko"
 }
 
 variable "environment" {
-  description = "The environment (e.g., dev, prod)"
+  description = "The environment (e.g., develop, staging, production)"
   type        = string
+  default     = "develop"
 }
 
 variable "vpc_cidr" {
