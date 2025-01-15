@@ -24,6 +24,7 @@ zsh shell
 
 ```shell
 make init
+make git/commit-template
 ```
 
 ## 実行スクリプト
@@ -46,7 +47,7 @@ terraform fmt -recursive
 
 ### 必読(開発する場合)
 
-- [ディレクトリ構成](./docs/terraform/directory.md)
+- [ディレクトリルール](./docs/terraform/directory.md)
 - [ブランチルール](./docs/git/branch.md)
 - [コミットルール](./docs/git/commit.md)
 

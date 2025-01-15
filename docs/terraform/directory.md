@@ -1,4 +1,8 @@
-# フォルダ構成
+# ディレクトリ
+
+ディレクトリ運用ルール
+
+## 構成
 
 ```text
 root/
@@ -20,3 +24,13 @@ root/
 ## service_environments.json
 
 サービスや環境を追加する場合、追加する必要がある
+
+```json
+[
+  {
+    "name": "<サービス名>",
+    "environment": "<env develop|staging|production>",
+    "dir": "<terraformのルートディレクトリ>"
+  }
+]
+```
