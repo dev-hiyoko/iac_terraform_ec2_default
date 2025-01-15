@@ -83,16 +83,16 @@ resource "aws_db_instance" "mysql" {
   parameter_group_name = aws_db_parameter_group.mysql_parametergroup.name
   option_group_name    = aws_db_option_group.mysql_optiongroup.name
 
-	# バックアップ
+  # バックアップ
   backup_window              = "04:00-05:00"
   backup_retention_period    = 7
   maintenance_window         = "Mon:05:00-Mon:08:00"
   auto_minor_version_upgrade = false
 
-	# 削除防止
+  # 削除防止
   deletion_protection = true  // 削除時falseに変更
   skip_final_snapshot = false // 削除時trueに変更
-  apply_immediately   = true // 削除時trueに変更
+  apply_immediately   = true  // 削除時trueに変更
 
   tags = {
     Name    = "${var.project}-${var.environment}-mysql"
