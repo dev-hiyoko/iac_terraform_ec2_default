@@ -38,6 +38,7 @@ make terraform <service name> <env> <terraform cmd> [EXTRA="<terraform options>"
 sample cmd
 
 ```shell
+make terraform hiyoko develop init
 make terraform hiyoko develop fmt EXTRA="-recursive"
 make terraform hiyoko develop plan
 make terraform hiyoko develop apply EXTRA="-auto-approve"
