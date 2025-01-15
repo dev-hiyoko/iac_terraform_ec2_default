@@ -22,7 +22,7 @@ terraform() {
 
     project_root=$(git rev-parse --show-toplevel 2>/dev/null || echo "$(pwd)")
     work_dir=$(pwd)
-    docker_image="hashicorp/terraform:1.7"
+    docker_image="hashicorp/terraform:1.10"
     zsh -c "docker run --rm -it \
         $envs \
         -v "$project_root:$project_root" \
