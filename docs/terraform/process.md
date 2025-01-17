@@ -6,9 +6,9 @@
 2. vpc + subnet
 3. route table + route table association
 4. internet gateway
-5. security group()
-6. rds(instance, parameter group, subnet group, subnet)
-7. ec2
+5. security group
+6. rds
+7. ec2 (key pair)
 8. terraform(state file)
 9. iam
 10. parameter store

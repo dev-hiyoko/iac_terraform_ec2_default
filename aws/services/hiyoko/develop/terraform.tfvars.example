@@ -1,3 +1,5 @@
 project = "hiyoko"
 
 environment = "develop"
+
+keypair_relative_path = "<鍵ファイルの相対パス>"

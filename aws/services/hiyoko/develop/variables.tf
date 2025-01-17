@@ -10,6 +10,12 @@ variable "environment" {
   default     = "develop"
 }
 
+variable "keypair_relative_path" {
+  description = "The key pair"
+  type        = string
+  default     = "./.ssh/hiyoko-dev-keypair.pub"
+}
+
 variable "vpc_cidr" {
   description = "The CIDR block for the VPC"
   type        = string
