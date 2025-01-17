@@ -20,28 +20,37 @@ TODO: narikawa .terraform.lock.hcl の取り扱いについて
 mac os  
 zsh shell
 
-## クイックスタート
+## 初期設定/クイックスタート
 
 1. 鍵ファイル生成
 
+   鍵ファイルの作成サンプル
+
    ```shell
-   ssh-keygen [-t 鍵の種類] [-b 鍵のビット数(2048以上が推奨)] [-f 鍵のファイル名]
+   ssh-keygen -t rsa -b 2048 -f hiyoko-dev-keypair
+   mkdir -p ./aws/services/hiyoko/develop/.ssh
+   mv ./hiyoko-dev-keypair ./aws/services/hiyoko/develop/.ssh/hiyoko-dev-keypair.pem
+   mv ./hiyoko-dev-keypair.pub ./aws/services/hiyoko/develop/.ssh
    ```
 
-2. .tfvars の設定
-
-3. 初期設定
+2. コマンド実行
 
    ```shell
    make init
    make git/commit-template
    ```
 
+3. .tfvars
+
+   必要な場合作成する
+
 4. init/fmt/plan/apply/destroy
+
+   実行スクリプトのサンプル
 
    ```shell
    make terraform hiyoko develop init
-   make terraform hiyoko develop fmt EXTRA="-recursive"
+   terraform fmt -recursive
    make terraform hiyoko develop plan
    make terraform hiyoko develop apply EXTRA="-auto-approve"
    make terraform hiyoko develop destroy EXTRA="-auto-approve"
