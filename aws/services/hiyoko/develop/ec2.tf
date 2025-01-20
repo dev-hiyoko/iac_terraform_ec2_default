@@ -22,7 +22,7 @@ resource "aws_key_pair" "keypair" {
 # TODO DBインスタンスを作成
 resource "aws_instance" "app" {
   ami                         = data.aws_ami.app.id
-  instance_type               = "t2.micro"
+  instance_type               = var.ec2_instance_type
   subnet_id                   = module.vpc_main.public_subnet_ids_by_az[var.availability_zone["a"]]
   associate_public_ip_address = true
   vpc_security_group_ids = [
