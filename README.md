@@ -1,10 +1,8 @@
 # terraform sample
 
 暫定  
-vpc + cloud front + s3 + elb + ec2 + rds + dns(route53) + acm + sg + iam  
 TODO: narikawa 構成図を作成  
 TODO: narikawa terraform のローカル実行環境の構築方法をまとめる（terraform docker に aws vault についてまとめればよさそう）  
-TODO: narikawa サーバービルドのサービスについて調べる  
 TODO: narikawa code pipeline  
 TODO: narikawa 複数環境の実装方法について(atlantis について)  
 TODO: narikawa ローカル、git actions の terraform のバージョン統一方法（github のビルド用のフローが必要？）  
@@ -15,6 +13,7 @@ TODO: narikawa git actions の追加（本番以外の環境の apply を main �
 TODO: narikawa git actions の追加（本番の環境の apply を手動で実行）  
 TODO: narikawa .terraform.lock.hcl の取り扱いについて
 TODO: narikawa クイックスタートを別ファイルに分割し、初期設定を作成
+TODO: narikawa keypair の運用方法についてまとめる
 
 ## 環境
 
@@ -45,7 +44,15 @@ zsh shell
 
    必要な場合作成する
 
-4. init/fmt/plan/apply/destroy
+4. db instance ファイルの設定
+
+   ```shell
+   cp ./example/ec2_db.tf ./aws/services/hiyoko/develop/
+   # or
+   cp ./example/rds.tf ./aws/services/hiyoko/develop/
+   ```
+
+5. init/fmt/plan/apply/destroy
 
    実行スクリプトのサンプル
 

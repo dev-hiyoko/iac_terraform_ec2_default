@@ -1,7 +1,6 @@
 # ====================================================
 # RDS parameter group
 # ====================================================
-# TODO narikawa family、characterの考慮とそのほかセットするべき項目について
 resource "aws_db_parameter_group" "mysql_parametergroup" {
   name   = "${var.project}-${var.environment}-mysql-parametergroup"
   family = "mysql8.0"
@@ -20,7 +19,6 @@ resource "aws_db_parameter_group" "mysql_parametergroup" {
 # ====================================================
 # RDS option group
 # ====================================================
-# TODO narikawa 現状空なので 設定を考える
 resource "aws_db_option_group" "mysql_optiongroup" {
   name                 = "${var.project}-${var.environment}-mysql-optiongroup"
   engine_name          = "mysql"
