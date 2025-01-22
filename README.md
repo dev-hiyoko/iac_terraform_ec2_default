@@ -47,7 +47,7 @@ zsh shell
 4. db instance ファイルの設定
 
    ```shell
-   cp ./example/ec2_db.tf ./aws/services/hiyoko/develop/
+   cp ./example/ec2_mysql.tf ./aws/services/hiyoko/develop/
    # or
    cp ./example/rds.tf ./aws/services/hiyoko/develop/
    ```
@@ -87,3 +87,10 @@ make terraform <service name> <env> <terraform cmd> [EXTRA="<terraform options>"
 - [terraform 実行環境構築 for docker](./docs/terraform/docker.md)
 - [terraform file process](./docs/terraform/process.md)
 - [terraform tfstate](./docs/terraform/tfstate.md)
+
+2. 英語
+3. web のワイヤーフレームについて/サイトデザインについて
+
+TODO 課題
+
+- サブネットの名前を 0 とか 1 ではなく a-c に変更する

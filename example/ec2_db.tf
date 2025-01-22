@@ -1,1 +1,0 @@
-# TODO narikawa EC2 DB instanceの作成

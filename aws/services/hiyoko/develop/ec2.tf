@@ -1,6 +1,16 @@
 # ====================================================
 # EC2 keypair
 # ====================================================
+resource "aws_eip" "app_instance" {
+  instance = aws_instance.app.id
+
+  tags = {
+    Name    = "${var.project}-${var.environment}-app-eip"
+    Project = var.project
+    Env     = var.environment
+  }
+}
+
 # ローカルでキーペアを作成
 # ssh-keygen [-t 鍵の種類] [-b 鍵のビット数(2048以上が推奨)] [-f 鍵のファイル名]
 # ssh-keygen -t rsa -b 2048 -f hiyoko-dev-keypair
@@ -19,7 +29,6 @@ resource "aws_key_pair" "keypair" {
 # EC2 instance
 # ====================================================
 # TODO モジュール化
-# TODO DBインスタンスを作成
 resource "aws_instance" "app" {
   ami                         = data.aws_ami.app.id
   instance_type               = var.ec2_instance_type
