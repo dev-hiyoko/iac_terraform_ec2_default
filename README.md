@@ -1,4 +1,4 @@
-# terraform sample
+# terraform EC2 sample
 
 <!--
 暫定
