@@ -2,4 +2,6 @@ project = "hiyoko"
 
 environment = "develop"
 
-keypair_relative_path = "<鍵ファイルの相対パス>"
+keypair_path = "<鍵ファイルのパス>"
+
+ec2_instance_type = "t2.micro"

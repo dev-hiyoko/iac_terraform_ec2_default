@@ -10,7 +10,7 @@ variable "environment" {
   default     = "develop"
 }
 
-variable "keypair_relative_path" {
+variable "keypair_path" {
   description = "The key pair"
   type        = string
   default     = "./.ssh/hiyoko-dev-keypair.pub"

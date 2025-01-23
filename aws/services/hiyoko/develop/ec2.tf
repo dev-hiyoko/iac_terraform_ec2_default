@@ -16,7 +16,7 @@ resource "aws_eip" "app_instance" {
 # ssh-keygen -t rsa -b 2048 -f hiyoko-dev-keypair
 resource "aws_key_pair" "keypair" {
   key_name   = "${var.project}-${var.environment}-keypair"
-  public_key = file(var.keypair_relative_path)
+  public_key = file(var.keypair_path)
 
   tags = {
     Name    = "${var.project}-${var.environment}-keypair"
