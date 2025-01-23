@@ -22,6 +22,11 @@ zsh shell
 
 ## クイックスタート
 
+0. terraform 実行環境設定
+
+   ここでは、aws-vault+docker を利用した環境構築方法について簡単に説明している  
+   [terraform 実行環境構築 for docker](./docs/terraform/docker.md)
+
 1. 鍵ファイル生成
 
    鍵ファイルの作成サンプル
@@ -29,6 +34,7 @@ zsh shell
    ```shell
    ssh-keygen -t rsa -b 2048 -f hiyoko-dev-keypair
    mkdir -p ./aws/services/hiyoko/develop/.ssh
+   # 鍵ファイルの配置場所は、tfvarsで変更可能
    mv ./hiyoko-dev-keypair ./aws/services/hiyoko/develop/.ssh/hiyoko-dev-keypair.pem
    mv ./hiyoko-dev-keypair.pub ./aws/services/hiyoko/develop/.ssh
    ```
@@ -40,11 +46,16 @@ zsh shell
    make git/commit-template
    ```
 
-3. .tfvars
+3. .tfstate
+
+   tfstate を共有設定する場合、下記を参考に設定する  
+   [terraform tfstate](./docs/terraform/tfstate.md)
+
+4. .tfvars
 
    必要な場合作成する
 
-4. db instance ファイルの設定
+5. db instance ファイルの設定
 
    ```shell
    cp ./example/ec2_mysql.tf ./aws/services/hiyoko/develop/
@@ -52,7 +63,7 @@ zsh shell
    cp ./example/rds.tf ./aws/services/hiyoko/develop/
    ```
 
-5. init/fmt/plan/apply/destroy
+6. init/fmt/plan/apply/destroy
 
    実行スクリプトのサンプル
 
