@@ -34,6 +34,7 @@ resource "aws_instance" "app" {
   instance_type               = var.ec2_instance_type
   subnet_id                   = module.vpc_main.public_subnet_ids_by_az[var.availability_zone["a"]]
   associate_public_ip_address = true
+  iam_instance_profile        = aws_iam_instance_profile.app_ec2_profile.name
   vpc_security_group_ids = [
     aws_security_group.app_sg.id,
     aws_security_group.opmng_sg.id
