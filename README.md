@@ -17,19 +17,14 @@ TODO: narikawa クイックスタートを別ファイルに分割し、初期�
 TODO: narikawa keypair の運用方法についてまとめる(特に github で terraform の apply までやりたい時)
 -->
 
-## 環境
+## 動作確認環境
 
-mac os  
-zsh shell
+macos/zsh
 
-## クイックスタート
+## 使い方
 
-0. terraform 実行環境設定
-
-   ここでは、aws-vault+docker を利用した環境構築方法について簡単に説明している  
-   [terraform 実行環境構築 for docker](./docs/terraform/docker.md)
-
-1. 鍵ファイル生成
+1. [ディレクトリルールと実行スクリプト](./docs/rule.md)を確認
+2. 鍵ファイル生成
 
    鍵ファイルの作成サンプル
 
@@ -41,23 +36,24 @@ zsh shell
    mv ./hiyoko-dev-keypair.pub ./aws/services/hiyoko/develop/.ssh
    ```
 
-2. コマンド実行
+3. 初期設定コマンドの実行
 
    ```shell
    make init
    make git/commit-template
    ```
 
-3. .tfstate
+4. .tfstate ファイルの設定
 
    tfstate を共有設定する場合、下記を参考に設定する  
    [terraform tfstate](./docs/terraform/tfstate.md)
 
-4. .tfvars
+5. .tfvars ファイルの設定
 
-   必要な場合作成する
+   必要な場合作成する  
+   さらに調整したい場合は、variables.tf を編集する
 
-5. db instance ファイルの設定
+6. db instance ファイルの設定
 
    RDS か EC2 on MySQL を選択する
 
@@ -67,7 +63,7 @@ zsh shell
    cp ./example/rds.tf ./aws/services/hiyoko/develop/
    ```
 
-6. init/fmt/plan/apply/destroy
+7. init/fmt/plan/apply/destroy
 
    実行スクリプトのサンプル
 
@@ -79,19 +75,9 @@ zsh shell
    make terraform hiyoko develop destroy EXTRA="-auto-approve"
    ```
 
-## 実行スクリプト
-
-環境を作成する場合、service_environments.json に追加
-
-```shell
-make terraform <service name> <env> <terraform cmd> [EXTRA="<terraform options>"]
-```
-
 ## ドキュメント
 
-### 開発者
-
-- [ディレクトリルール](./docs/terraform/directory.md)
+- [使い方](./docs/rule.md)
 - [ブランチルール](./docs/git/branch.md)
 - [コミットルール](./docs/git/commit.md)
 

@@ -1,6 +1,4 @@
-# ディレクトリ
-
-ディレクトリ運用ルール
+# ルール
 
 ## 構成
 
@@ -33,4 +31,12 @@ root/
     "dir": "<terraformのルートディレクトリ>"
   }
 ]
+```
+
+## 実行スクリプト
+
+環境を作成する場合、service_environments.json に追加
+
+```shell
+make terraform <service name> <env> <terraform cmd> [EXTRA="<terraform options>"]
 ```

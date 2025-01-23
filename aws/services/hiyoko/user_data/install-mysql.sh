@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# TODO ファイルを分ける
 # インターネット接続を確認する
 for i in {1..30}; do
     curl -Is https://www.google.com > /dev/null && break
