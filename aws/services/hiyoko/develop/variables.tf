@@ -1,3 +1,4 @@
+# TODO localsで設定した方が良いものは修正する
 variable "project" {
   description = "The project name"
   type        = string
@@ -10,10 +11,13 @@ variable "environment" {
   default     = "develop"
 }
 
-variable "keypair_path" {
-  description = "The key pair"
-  type        = string
-  default     = "./.ssh/hiyoko-dev-keypair.pub"
+variable "availability_zone" {
+  description = "The availability zones"
+  type        = map(string)
+  default = {
+    a = "ap-northeast-1a"
+    c = "ap-northeast-1c"
+  }
 }
 
 variable "vpc_cidr" {
@@ -33,13 +37,16 @@ variable "subnets_cidr" {
   }
 }
 
-variable "availability_zone" {
-  description = "The availability zones for subnets"
-  type        = map(string)
-  default = {
-    a = "ap-northeast-1a"
-    c = "ap-northeast-1c"
-  }
+variable "keypair_path" {
+  description = "The key pair"
+  type        = string
+  default     = "./.ssh/hiyoko-dev-keypair.pub"
+}
+
+variable "app_ami" {
+  description = "The APP EC2 instance ami filter"
+  type        = string
+  default     = "al2023-ami-2023.6.*.0-kernel-6.1-x86_64"
 }
 
 variable "ec2_instance_type" {

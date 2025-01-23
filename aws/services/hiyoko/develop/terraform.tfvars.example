@@ -3,5 +3,3 @@ project = "hiyoko"
 environment = "develop"
 
 keypair_path = "<鍵ファイルのパス>"
-
-ec2_instance_type = "t2.micro"

@@ -1,4 +1,25 @@
 # ====================================================
+# ami
+# ====================================================
+data "aws_ami" "mysql" {
+  most_recent = true
+  owners      = ["self", "amazon"]
+
+  filter {
+    name   = "name"
+    values = ["al2023-ami-2023.6.*.0-kernel-6.1-x86_64"]
+  }
+  filter {
+    name   = "root-device-type"
+    values = ["ebs"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+}
+
+# ====================================================
 # Security Group (db)
 # ====================================================
 resource "aws_security_group_rule" "db_out_https" {
@@ -58,7 +79,7 @@ resource "random_password" "db_password" {
 }
 
 resource "aws_instance" "mysql" {
-  ami               = data.aws_ami.app.id
+  ami               = data.aws_ami.mysql.id
   instance_type     = var.ec2_instance_type
   availability_zone = var.availability_zone["a"]
   subnet_id         = module.vpc_main.private_subnet_ids_by_az[var.availability_zone["a"]]
