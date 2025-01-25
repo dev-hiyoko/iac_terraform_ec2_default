@@ -3,6 +3,7 @@
 
 .ssh
 
+# サンプルなので除外
 *.terraform.lock.hcl
 
 # Created by https://www.toptal.com/developers/gitignore/api/terraform

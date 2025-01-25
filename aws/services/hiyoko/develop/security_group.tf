@@ -31,16 +31,6 @@ resource "aws_security_group_rule" "web_in_https" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
-# TODO narikawa （削除予定）
-resource "aws_security_group_rule" "web_out_tcp3000" {
-  security_group_id        = aws_security_group.web_sg.id
-  type                     = "egress"
-  protocol                 = "tcp"
-  from_port                = 3000
-  to_port                  = 3000
-  source_security_group_id = aws_security_group.app_sg.id
-}
-
 # ====================================================
 # Security Group (app)
 # ====================================================
@@ -54,16 +44,6 @@ resource "aws_security_group" "app_sg" {
     Project = var.project
     Env     = var.environment
   }
-}
-
-# TODO narikawa （削除予定）
-resource "aws_security_group_rule" "app_in_hcp3000" {
-  security_group_id        = aws_security_group.app_sg.id
-  type                     = "ingress"
-  protocol                 = "tcp"
-  from_port                = 3000
-  to_port                  = 3000
-  source_security_group_id = aws_security_group.web_sg.id
 }
 
 resource "aws_security_group_rule" "app_out_http" {
@@ -114,16 +94,6 @@ resource "aws_security_group_rule" "opmng_in_ssh" {
   protocol          = "tcp"
   from_port         = 22
   to_port           = 22
-  cidr_blocks       = ["0.0.0.0/0"]
-}
-
-# TODO narikawa （削除予定）
-resource "aws_security_group_rule" "opmng_in_hcp3000" {
-  security_group_id = aws_security_group.opmng_sg.id
-  type              = "ingress"
-  protocol          = "tcp"
-  from_port         = 3000
-  to_port           = 3000
   cidr_blocks       = ["0.0.0.0/0"]
 }
 

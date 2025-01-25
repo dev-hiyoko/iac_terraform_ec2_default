@@ -43,32 +43,37 @@ macos/zsh
    make git/commit-template
    ```
 
-4. .tfstate ファイルの設定
+4. .gitignore ファイルの設定
+
+   不要な行を削除
+
+5. .tfstate ファイルの設定
 
    tfstate を共有設定する場合、下記を参考に設定する  
    [terraform tfstate](./docs/terraform/tfstate.md)
 
-5. .tfvars ファイルの設定
+6. .tfvars ファイルの設定
 
    必要な場合作成する  
    さらに調整したい場合は、variables.tf を編集する
 
-6. db instance ファイルの設定
+7. db instance ファイルの設定
 
    RDS か EC2 on MySQL を選択する
 
    ```shell
-   cp ./example/ec2_mysql.tf ./aws/services/hiyoko/develop/
+   cp ./example/terraform/ec2_mysql.tf ./aws/services/hiyoko/develop/
    # or
-   cp ./example/rds.tf ./aws/services/hiyoko/develop/
+   cp ./example/terraform/rds.tf ./aws/services/hiyoko/develop/
    ```
 
-7. init/fmt/plan/apply/destroy
+8. init/fmt/plan/apply/destroy
 
    実行スクリプトのサンプル
 
    ```shell
    make terraform hiyoko develop init
+   make terraform hiyoko develop refresh
    make terraform hiyoko develop fmt EXTRA="-recursive"
    make terraform hiyoko develop plan
    make terraform hiyoko develop apply EXTRA="-auto-approve"
@@ -88,3 +93,4 @@ macos/zsh
 - [terraform 実行環境構築 for docker](./docs/terraform/docker.md)
 - [terraform file process](./docs/terraform/process.md)
 - [terraform tfstate](./docs/terraform/tfstate.md)
+- [サーバー構築(nginx)](./docs/server/nginx.md)
