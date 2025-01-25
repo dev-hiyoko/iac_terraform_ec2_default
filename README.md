@@ -40,19 +40,18 @@ macos/zsh
 
    ```shell
    make init
-   make git/commit-template
    ```
 
-4. .gitignore ファイルの設定
+4. .gitignore ファイルの設定(任意)
 
    不要な行を削除
 
-5. .tfstate ファイルの設定
+5. .tfstate ファイルの設定(任意)
 
    tfstate を共有設定する場合、下記を参考に設定する  
    [terraform tfstate](./docs/terraform/tfstate.md)
 
-6. .tfvars ファイルの設定
+6. .tfvars ファイルの設定(任意)
 
    必要な場合作成する  
    さらに調整したい場合は、variables.tf を編集する

@@ -1,6 +1,6 @@
 # init
 .PHONY: init
-init:
+init: git/commit-template
 	chmod +x ./scripts/run-terraform.zsh
 
 # terraform
@@ -16,4 +16,4 @@ terraform:
 # git
 git/commit-template:
 	git config commit.template ./.github/.gitmessage.txt &&\
-	git config --add commit.cleanup strip
+	git config commit.cleanup strip
