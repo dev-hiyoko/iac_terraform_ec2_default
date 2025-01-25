@@ -87,9 +87,12 @@ macos/zsh
 
 ### 参考
 
-- [terraform](https://developer.hashicorp.com/terraform)
-- [terraform provider](https://registry.terraform.io/browse/providers)
 - [terraform 実行環境構築 for docker](./docs/terraform/docker.md)
 - [terraform file process](./docs/terraform/process.md)
 - [terraform tfstate](./docs/terraform/tfstate.md)
 - [サーバー構築(nginx)](./docs/server/nginx.md)
+
+### 公式
+
+- [terraform](https://developer.hashicorp.com/terraform)
+- [terraform provider](https://registry.terraform.io/browse/providers)
