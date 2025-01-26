@@ -30,7 +30,8 @@
    }
    ```
 
-4. init/plan/apply
+4. `data "terraform_remote_state" "shared"`の修正(修正内容は適宜検索)
+5. init/plan/apply
 
 ### 注意点
 

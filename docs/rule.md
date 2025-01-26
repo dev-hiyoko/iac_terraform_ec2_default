@@ -11,6 +11,7 @@ root/
 │       │   │   └── main.tf
 │       │   ├── staging/        # 環境名
 │       │   ├── production/     # 環境名
+│       │   ├── shared/         # 供用
 │       │   └── modules/        # モジュール
 │       └── <サービス名>/
 ├── gcp/                        # 任意のクラウド
@@ -21,13 +22,14 @@ root/
 
 ## service_environments.json
 
-サービスや環境を追加する場合、追加する必要がある
+サービスや環境を追加する場合、追加する必要がある  
+＊ 全ての環境はsharedに依存する  
 
 ```json
 [
   {
     "name": "<サービス名>",
-    "environment": "<env develop|staging|production>",
+    "environment": "<env develop|staging|production|shared>",
     "dir": "<terraformのルートディレクトリ>"
   }
 ]

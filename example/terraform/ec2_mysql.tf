@@ -94,6 +94,8 @@ resource "aws_instance" "mysql" {
     db_name     = "${var.project}_${var.environment}"
   })
 
+  key_name = aws_key_pair.keypair.key_name
+
   # user_data実行時にインターネット接続が出来なくなるため
   depends_on = [aws_route.public_ngw_main]
 

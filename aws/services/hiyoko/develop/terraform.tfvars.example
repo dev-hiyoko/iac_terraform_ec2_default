@@ -1,5 +1,7 @@
 project = "hiyoko"
 
+domain = "hiyoko"
+
 environment = "develop"
 
 keypair_path = "<鍵ファイルのパス>"

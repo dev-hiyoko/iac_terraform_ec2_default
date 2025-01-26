@@ -1,6 +1,11 @@
 [
   {
     "name": "hiyoko",
+    "environment": "shared",
+    "dir": "./aws/services/hiyoko/shared"
+  },
+  {
+    "name": "hiyoko",
     "environment": "develop",
     "dir": "./aws/services/hiyoko/develop"
   }

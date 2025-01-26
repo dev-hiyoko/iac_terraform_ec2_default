@@ -66,18 +66,28 @@ macos/zsh
    cp ./example/terraform/rds.tf ./aws/services/hiyoko/develop/
    ```
 
-8. init/fmt/plan/apply/destroy
-
-   実行スクリプトのサンプル
+8. 実行
 
    ```shell
-   make terraform hiyoko develop init
-   make terraform hiyoko develop refresh
-   make terraform hiyoko develop fmt EXTRA="-recursive"
-   make terraform hiyoko develop plan
+   make terraform hiyoko shared apply EXTRA="-auto-approve"
    make terraform hiyoko develop apply EXTRA="-auto-approve"
-   make terraform hiyoko develop destroy EXTRA="-auto-approve"
    ```
+
+9. ドメインのネームサーバーをroute53のものに変更する
+
+10. init/fmt/plan/apply/destroyサンプル
+
+    実行スクリプトのサンプル
+
+    ```shell
+    make terraform hiyoko shared apply EXTRA="-auto-approve"
+    make terraform hiyoko develop refresh
+    make terraform hiyoko develop graph EXTRA="> -p sample.dot"
+    make terraform hiyoko develop fmt EXTRA="-recursive"
+    make terraform hiyoko develop plan
+    make terraform hiyoko develop apply EXTRA="-auto-approve"
+    make terraform hiyoko develop destroy EXTRA="-auto-approve"
+    ```
 
 ## ドキュメント
 
