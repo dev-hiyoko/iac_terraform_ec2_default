@@ -56,11 +56,11 @@ resource "aws_security_group" "app_sg" {
 }
 
 resource "aws_security_group_rule" "app_in_http" {
-  security_group_id = aws_security_group.app_sg.id
-  type              = "ingress"
-  protocol          = "tcp"
-  from_port         = 80
-  to_port           = 80
+  security_group_id        = aws_security_group.app_sg.id
+  type                     = "ingress"
+  protocol                 = "tcp"
+  from_port                = 80
+  to_port                  = 80
   source_security_group_id = aws_security_group.web_sg.id
 }
 
@@ -113,7 +113,7 @@ resource "aws_security_group_rule" "opmng_in_ssh" {
   from_port         = 22
   to_port           = 22
   # TODO アクセス元を制御する
-  cidr_blocks       = ["0.0.0.0/0"]
+  cidr_blocks = ["0.0.0.0/0"]
 }
 
 resource "aws_security_group_rule" "opmng_out_http" {
