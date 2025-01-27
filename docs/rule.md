@@ -40,5 +40,5 @@ root/
 環境を作成する場合、service_environments.json に追加
 
 ```shell
-make terraform <service name> <env> <terraform cmd> [EXTRA="<terraform options>"]
+make terraform <service name> <env> <terraform cmd> [terraform options]
 ```
