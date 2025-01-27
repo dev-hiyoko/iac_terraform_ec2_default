@@ -40,6 +40,8 @@ resource "aws_security_group_rule" "db_out_http" {
   cidr_blocks       = ["0.0.0.0/0"]
 }
 
+# TODO ssh 22ポートをメインインスタンスからのみアクセスできるようにする
+
 # ====================================================
 # Network Address Translation Gateway
 # ====================================================
@@ -99,7 +101,7 @@ resource "aws_instance" "mysql" {
   # user_data実行時にインターネット接続が出来なくなるため
   depends_on = [aws_route.public_ngw_main]
 
-  # TODO narikawa バックアップ
+  # TODO narikawa バックアップ設定を追加する
 
   tags = {
     Name    = "${var.project}-${var.environment}-mysql"
