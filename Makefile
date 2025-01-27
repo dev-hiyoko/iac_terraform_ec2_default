@@ -3,10 +3,7 @@
 init: git/commit-template
 	chmod +x ./scripts/run-terraform.zsh
 
-
-
 # terraform
-# TODO 引数でterraform用の引数を渡せない
 .PHONY: terraform
 terraform:
 	@SERVICE=$(word 2, $(MAKECMDGOALS)); \
