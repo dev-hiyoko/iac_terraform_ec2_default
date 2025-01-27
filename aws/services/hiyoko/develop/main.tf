@@ -1,19 +1,13 @@
-# TODO narikawa 記述方法が正しいかどうか確認する
-# TODO narikawa terraform fmtチェックのactionsを追加する
 terraform {
-  # TODO: narikawa バージョンを確認する
-  required_version = ">= 0.13"
+  required_version = ">= 1.10"
   required_providers {
-    # TODO: narikawa バージョンを確認する
     aws = {
       source  = "hashicorp/aws"
-      version = "~>3.0"
+      version = "~>5.84"
     }
   }
 }
 
-# TODO: narikawa .envからregionを取得できない？
-# TODO: narikawa tfvarsはgit管理しない場合、どうやって生成する？（サンプルファイルでもおいておく？）
 provider "aws" {
   region = "ap-northeast-1"
 }
