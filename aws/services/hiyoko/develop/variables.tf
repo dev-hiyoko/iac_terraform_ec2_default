@@ -1,4 +1,4 @@
-# TODO localsで設定した方が良いものは修正する
+# global
 variable "project" {
   description = "The project name"
   type        = string
@@ -17,6 +17,13 @@ variable "environment" {
   default     = "develop"
 }
 
+# network
+variable "vpc_cidr" {
+  description = "The CIDR block for the VPC"
+  type        = string
+  default     = "10.0.0.0/16"
+}
+
 variable "availability_zone" {
   description = "The availability zones"
   type        = map(string)
@@ -24,12 +31,6 @@ variable "availability_zone" {
     a = "ap-northeast-1a"
     c = "ap-northeast-1c"
   }
-}
-
-variable "vpc_cidr" {
-  description = "The CIDR block for the VPC"
-  type        = string
-  default     = "10.0.0.0/16"
 }
 
 variable "subnets_cidr" {
@@ -43,12 +44,20 @@ variable "subnets_cidr" {
   }
 }
 
+# security
+variable "allowlist_operations_manager" {
+  description = "List of IP ranges allowed to access the Operations Manager"
+  type        = list(string)
+  default     = ["0.0.0.0/0"]
+}
+
 variable "keypair_path" {
   description = "The key pair"
   type        = string
   default     = "./.ssh/hiyoko-dev-keypair.pub"
 }
 
+# instance
 variable "app_ami" {
   description = "The APP EC2 instance ami filter"
   type        = string

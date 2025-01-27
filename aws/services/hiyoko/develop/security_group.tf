@@ -112,8 +112,7 @@ resource "aws_security_group_rule" "opmng_in_ssh" {
   protocol          = "tcp"
   from_port         = 22
   to_port           = 22
-  # TODO アクセス元を制御する
-  cidr_blocks = ["0.0.0.0/0"]
+  cidr_blocks       = var.allowlist_operations_manager
 }
 
 resource "aws_security_group_rule" "opmng_out_http" {
