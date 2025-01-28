@@ -68,15 +68,15 @@ macos/zsh
 
 10. ドメインの検証設定を変更する
 
-***※ 9のネームサーバー変更が確認できてから実行する***
+   ***※ 9のネームサーバー変更が確認できてから実行する***
+   
+   ```shell
+   cp ./example/terraform/acm_valid.tf ./aws/services/hiyoko/shared/
+   make terraform hiyoko shared apply -- -auto-approve
+   ```
 
-```shell
-cp ./example/terraform/acm_valid.tf ./aws/services/hiyoko/shared/
-make terraform hiyoko shared apply -- -auto-approve
-```
-
-ドメイン取得サイトで検証用のCNAMEを設定する。  
-***※ 確認できない限り処理が終了しない***
+   ドメイン取得サイトで検証用のCNAMEを設定する。  
+   ***※ 確認できない限り処理が終了しない***
 
 11. develop環境の実行
 
