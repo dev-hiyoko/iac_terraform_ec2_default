@@ -44,8 +44,9 @@ macos/zsh
 
 6. .tfvars ファイルの設定(任意)
 
-   必要な場合作成する  
-   さらに調整したい場合は、variables.tf を編集する
+   必要な場合作成する(下記参考)
+   - [terraform.tfvars.example](./aws/services/hiyoko/develop/terraform.tfvars.example)
+   - [variables.tf](./aws/services/hiyoko/develop/variables.tf)
 
 7. db instance ファイルの設定
 

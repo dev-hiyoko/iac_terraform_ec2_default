@@ -8,11 +8,11 @@ variable "project" {
 variable "domain" {
   description = "The Domain"
   type        = string
-  default     = "example.com"
+  default = "dev.example.com"
 }
 
 variable "environment" {
-  description = "The environment (e.g., develop, staging, production)"
+  description = "The environment (e.g., develop, staging, production, shared)"
   type        = string
   default     = "develop"
 }

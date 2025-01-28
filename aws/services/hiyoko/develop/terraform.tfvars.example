@@ -1,6 +1,6 @@
 project = "hiyoko"
 
-domain = "hiyoko"
+domain = "dev.example.com"
 
 environment = "develop"
 
