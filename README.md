@@ -58,14 +58,31 @@ macos/zsh
    cp ./example/terraform/rds.tf ./aws/services/hiyoko/develop/
    ```
 
-8. 実行
+8. 共通環境実行
 
    ```shell
    make terraform hiyoko shared apply -- -auto-approve
-   make terraform hiyoko develop apply -- -auto-approve
    ```
 
 9. ドメインのネームサーバーをroute53のものに変更する
+
+10. ドメインの検証設定を変更する
+
+***※ 9のネームサーバー変更が確認できてから実行する***
+
+```shell
+cp ./example/terraform/acm_valid.tf ./aws/services/hiyoko/shared/
+make terraform hiyoko shared apply -- -auto-approve
+```
+
+ドメイン取得サイトで検証用のCNAMEを設定する。  
+***※ 確認できない限り処理が終了しない***
+
+11. develop環境の実行
+
+```shell
+make terraform hiyoko develop apply -- -auto-approve
+```
 
 10. init/fmt/plan/apply/destroyサンプル
     実行スクリプトのサンプル
