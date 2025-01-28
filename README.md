@@ -80,11 +80,11 @@ make terraform hiyoko shared apply -- -auto-approve
 
 11. develop環境の実行
 
-```shell
-make terraform hiyoko develop apply -- -auto-approve
-```
+    ```shell
+    make terraform hiyoko develop apply -- -auto-approve
+    ```
 
-10. init/fmt/plan/apply/destroyサンプル
+12. init/fmt/plan/apply/destroyサンプル
     実行スクリプトのサンプル
 
     ```shell

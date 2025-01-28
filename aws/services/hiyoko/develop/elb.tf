@@ -18,6 +18,7 @@ resource "aws_lb" "alb" {
   }
 }
 
+# TODO 証明書設定後、httpsに修正する
 resource "aws_lb_listener" "alb_listener_http" {
   load_balancer_arn = aws_lb.alb.arn
   port              = 80
@@ -28,13 +29,6 @@ resource "aws_lb_listener" "alb_listener_http" {
     target_group_arn = aws_lb_target_group.alb_target_group.arn
   }
 }
-
-# TODO 証明書設定後の設定する
-# resource "aws_lb_listener" "alb_listener_https" {
-#   load_balancer_arn = aws_lb.alb.arn
-#   port              = "443"
-#   protocol          = "HTTPS"
-# }
 
 # ====================================================
 # Target Group
