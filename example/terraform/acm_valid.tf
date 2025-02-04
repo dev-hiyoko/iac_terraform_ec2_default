@@ -24,6 +24,6 @@ resource "aws_route53_record" "acm_dns_resolve" {
   zone_id         = aws_route53_zone.main.zone_id
   name            = each.value.name
   type            = each.value.type
-  records = [each.value.record]
+  records         = [each.value.record]
   ttl             = 600
 }
