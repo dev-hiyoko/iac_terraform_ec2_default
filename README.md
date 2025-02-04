@@ -71,7 +71,7 @@ macos/zsh
    ***※ 9のネームサーバー変更が確認できてから実行する***
    
    ```shell
-   cp ./example/terraform/acm_valid.tf ./aws/services/hiyoko/shared/
+   cp ./example/terraform/shared/acm_valid.tf ./aws/services/hiyoko/shared/
    make terraform hiyoko shared apply -- -auto-approve
    ```
 
