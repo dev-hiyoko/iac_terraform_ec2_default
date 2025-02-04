@@ -6,6 +6,9 @@
 # サンプルなので除外
 *.terraform.lock.hcl
 *.tfvars
+./aws/services/hiyoko/develop/ec2_mysql.tf
+./aws/services/hiyoko/develop/rds.tf
+./aws/services/hiyoko/shared/acm_valid.tf
 
 # Created by https://www.toptal.com/developers/gitignore/api/terraform
 # Edit at https://www.toptal.com/developers/gitignore?templates=terraform
