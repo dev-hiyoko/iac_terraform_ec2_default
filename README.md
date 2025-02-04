@@ -1,7 +1,6 @@
 # terraform EC2 sample
 
 <!--
-暫定
 TODO narikawa 構成図を作成
 TODO narikawa code pipeline(terraformソースとappソースそれぞれ)
 TODO narikawa ローカル、git actions の terraform のバージョン統一方法（github のビルド用のフローが必要？）
