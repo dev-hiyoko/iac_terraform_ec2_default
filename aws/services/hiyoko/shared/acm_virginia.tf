@@ -2,9 +2,8 @@
 # virginia region
 # ====================================================
 provider "aws" {
-  alias   = "virginia"
-  profile = "terraform"
-  region  = "us-east-1"
+  alias  = "virginia"
+  region = "us-east-1"
 }
 
 resource "aws_acm_certificate" "virginia" {
@@ -25,4 +24,8 @@ resource "aws_acm_certificate" "virginia" {
   depends_on = [
     aws_route53_zone.main
   ]
+}
+
+output "aws_acm_certificate_virginia_arn" {
+  value = aws_acm_certificate.virginia.arn
 }
