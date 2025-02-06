@@ -9,6 +9,7 @@
 aws/services/hiyoko/shared/acm_valid.tf
 aws/services/hiyoko/develop/ec2_mysql.tf
 aws/services/hiyoko/develop/rds.tf
+aws/services/hiyoko/develop/s3.tf
 
 # Created by https://www.toptal.com/developers/gitignore/api/terraform
 # Edit at https://www.toptal.com/developers/gitignore?templates=terraform

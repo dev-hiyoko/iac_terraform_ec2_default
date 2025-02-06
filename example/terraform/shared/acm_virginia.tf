@@ -2,13 +2,13 @@
 # virginia region
 # ====================================================
 provider "aws" {
-  alias = "virginia"
+  alias   = "virginia"
   profile = "terraform"
-  region = "us-east-1"
+  region  = "us-east-1"
 }
 
 resource "aws_acm_certificate" "virginia" {
-  provider = aws.virginia
+  provider          = aws.virginia
   domain_name       = "*.${var.domain}"
   validation_method = "DNS"
 
