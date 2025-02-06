@@ -1,16 +1,11 @@
+resource "aws_lb_target_group_attachment" "instance" {
+  target_group_arn = aws_lb_target_group.alb_target_group.arn
+  target_id        = aws_instance.app.id
+}
+
 # ====================================================
 # EC2 keypair
 # ====================================================
-resource "aws_eip" "app_instance" {
-  instance = aws_instance.app.id
-
-  tags = {
-    Name    = "${var.project}-${var.environment}-app-eip"
-    Project = var.project
-    Env     = var.environment
-  }
-}
-
 # ローカルでキーペアを作成
 # ssh-keygen [-t 鍵の種類] [-b 鍵のビット数(2048以上が推奨)] [-f 鍵のファイル名]
 # ssh-keygen -t rsa -b 2048 -f hiyoko-dev-keypair
