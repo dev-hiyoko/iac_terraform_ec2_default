@@ -23,7 +23,6 @@ resource "aws_key_pair" "keypair" {
 # ====================================================
 # EC2 instance
 # ====================================================
-# TODO モジュール化
 resource "aws_instance" "app" {
   ami                         = data.aws_ami.app.id
   instance_type               = var.ec2_instance_type
