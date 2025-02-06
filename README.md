@@ -99,6 +99,18 @@ macos/zsh
    make terraform hiyoko develop graph > ./docs/structure-graph/graph.dot
    ```
 
+14. IAMユーザーの作成
+
+   ```shell
+   brew install gpg
+   gpg --gen-key
+   gpg --list-keys
+   mkdir ./aws/services/hiyoko/.cert
+   gpg -o ./aws/services/hiyoko/.cert/master.public.gpg --export <realname>
+   ```
+   
+   ./aws/services/hiyoko/shared/iam_user.tf ファイルでユーザーを追加する
+
 ## ドキュメント
 
 - [使い方](./docs/rule.md)

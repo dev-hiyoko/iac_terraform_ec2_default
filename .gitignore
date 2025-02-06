@@ -2,6 +2,7 @@
 .vscode
 
 .ssh
+.cert
 
 # サンプルなので除外
 *.terraform.lock.hcl

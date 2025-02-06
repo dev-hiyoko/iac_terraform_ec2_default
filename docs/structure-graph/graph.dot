@@ -1,0 +1,157 @@
+Running 'terraform graph ' in ./aws/services/hiyoko/develop
+[0m[1mInitializing the backend...[0m
+[0m[1mInitializing modules...[0m
+[0m[1mInitializing provider plugins...[0m
+- terraform.io/builtin/terraform is built in to Terraform
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Using previously-installed hashicorp/aws v5.84.0
+
+[0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+[0m[32m
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.[0m
+digraph G {
+  rankdir = "RL";
+  node [shape = rect, fontname = "sans-serif"];
+  "data.aws_ami.app" [label="data.aws_ami.app"];
+  "data.aws_iam_policy_document.ec2_assume_role" [label="data.aws_iam_policy_document.ec2_assume_role"];
+  "data.aws_iam_policy_document.public_deploy" [label="data.aws_iam_policy_document.public_deploy"];
+  "data.aws_iam_policy_document.public_static" [label="data.aws_iam_policy_document.public_static"];
+  "data.aws_prefix_list.s3_lp" [label="data.aws_prefix_list.s3_lp"];
+  "data.terraform_remote_state.shared" [label="data.terraform_remote_state.shared"];
+  "aws_autoscaling_group.app_asg" [label="aws_autoscaling_group.app_asg"];
+  "aws_cloudfront_distribution.cf" [label="aws_cloudfront_distribution.cf"];
+  "aws_cloudfront_origin_access_identity.cf_s3_origin_access_identity" [label="aws_cloudfront_origin_access_identity.cf_s3_origin_access_identity"];
+  "aws_iam_instance_profile.app_ec2_profile" [label="aws_iam_instance_profile.app_ec2_profile"];
+  "aws_iam_policy_attachment.app_ec2_full" [label="aws_iam_policy_attachment.app_ec2_full"];
+  "aws_iam_policy_attachment.app_iam_role_s3_full" [label="aws_iam_policy_attachment.app_iam_role_s3_full"];
+  "aws_iam_policy_attachment.app_ssm_managed" [label="aws_iam_policy_attachment.app_ssm_managed"];
+  "aws_iam_role.app" [label="aws_iam_role.app"];
+  "aws_internet_gateway.main" [label="aws_internet_gateway.main"];
+  "aws_key_pair.keypair" [label="aws_key_pair.keypair"];
+  "aws_launch_template.app" [label="aws_launch_template.app"];
+  "aws_lb.alb" [label="aws_lb.alb"];
+  "aws_lb_listener.alb_listener_http" [label="aws_lb_listener.alb_listener_http"];
+  "aws_lb_listener.alb_listener_https" [label="aws_lb_listener.alb_listener_https"];
+  "aws_lb_target_group.alb_target_group" [label="aws_lb_target_group.alb_target_group"];
+  "aws_route.public_igw_main" [label="aws_route.public_igw_main"];
+  "aws_route53_record.cf" [label="aws_route53_record.cf"];
+  "aws_route53_record.elb_origin" [label="aws_route53_record.elb_origin"];
+  "aws_route_table.private_rt" [label="aws_route_table.private_rt"];
+  "aws_route_table.public_rt" [label="aws_route_table.public_rt"];
+  "aws_route_table_association.private_rt_a" [label="aws_route_table_association.private_rt_a"];
+  "aws_route_table_association.private_rt_c" [label="aws_route_table_association.private_rt_c"];
+  "aws_route_table_association.public_rt_a" [label="aws_route_table_association.public_rt_a"];
+  "aws_route_table_association.public_rt_c" [label="aws_route_table_association.public_rt_c"];
+  "aws_s3_bucket.public_deploy" [label="aws_s3_bucket.public_deploy"];
+  "aws_s3_bucket.public_static" [label="aws_s3_bucket.public_static"];
+  "aws_s3_bucket_policy.public_deploy" [label="aws_s3_bucket_policy.public_deploy"];
+  "aws_s3_bucket_policy.public_static" [label="aws_s3_bucket_policy.public_static"];
+  "aws_s3_bucket_public_access_block.public_deploy" [label="aws_s3_bucket_public_access_block.public_deploy"];
+  "aws_s3_bucket_public_access_block.public_static" [label="aws_s3_bucket_public_access_block.public_static"];
+  "aws_s3_bucket_versioning.public_deploy" [label="aws_s3_bucket_versioning.public_deploy"];
+  "aws_s3_bucket_versioning.public_static" [label="aws_s3_bucket_versioning.public_static"];
+  "aws_security_group.app_sg" [label="aws_security_group.app_sg"];
+  "aws_security_group.db_sg" [label="aws_security_group.db_sg"];
+  "aws_security_group.opmng_sg" [label="aws_security_group.opmng_sg"];
+  "aws_security_group.web_sg" [label="aws_security_group.web_sg"];
+  "aws_security_group_rule.app_in_http" [label="aws_security_group_rule.app_in_http"];
+  "aws_security_group_rule.app_out_http" [label="aws_security_group_rule.app_out_http"];
+  "aws_security_group_rule.app_out_https" [label="aws_security_group_rule.app_out_https"];
+  "aws_security_group_rule.app_out_tcp3306" [label="aws_security_group_rule.app_out_tcp3306"];
+  "aws_security_group_rule.db_in_tcp3306" [label="aws_security_group_rule.db_in_tcp3306"];
+  "aws_security_group_rule.opmng_in_ssh" [label="aws_security_group_rule.opmng_in_ssh"];
+  "aws_security_group_rule.opmng_out_http" [label="aws_security_group_rule.opmng_out_http"];
+  "aws_security_group_rule.opmng_out_https" [label="aws_security_group_rule.opmng_out_https"];
+  "aws_security_group_rule.web_in_http" [label="aws_security_group_rule.web_in_http"];
+  "aws_security_group_rule.web_in_https" [label="aws_security_group_rule.web_in_https"];
+  "aws_security_group_rule.web_out_http" [label="aws_security_group_rule.web_out_http"];
+  subgraph "cluster_module.vpc_main" {
+    label = "module.vpc_main"
+    fontname = "sans-serif"
+    "module.vpc_main.aws_subnet.private" [label="aws_subnet.private"];
+    "module.vpc_main.aws_subnet.public" [label="aws_subnet.public"];
+    "module.vpc_main.aws_vpc.main" [label="aws_vpc.main"];
+  }
+  "data.aws_iam_policy_document.public_deploy" -> "aws_iam_role.app";
+  "data.aws_iam_policy_document.public_deploy" -> "aws_s3_bucket.public_deploy";
+  "data.aws_iam_policy_document.public_static" -> "aws_cloudfront_origin_access_identity.cf_s3_origin_access_identity";
+  "data.aws_iam_policy_document.public_static" -> "aws_s3_bucket.public_static";
+  "aws_autoscaling_group.app_asg" -> "aws_launch_template.app";
+  "aws_autoscaling_group.app_asg" -> "aws_lb_target_group.alb_target_group";
+  "aws_autoscaling_group.app_asg" -> "module.vpc_main.aws_subnet.public";
+  "aws_cloudfront_distribution.cf" -> "aws_route53_record.elb_origin";
+  "aws_cloudfront_distribution.cf" -> "aws_s3_bucket_policy.public_static";
+  "aws_iam_instance_profile.app_ec2_profile" -> "aws_iam_role.app";
+  "aws_iam_policy_attachment.app_ec2_full" -> "aws_iam_role.app";
+  "aws_iam_policy_attachment.app_iam_role_s3_full" -> "aws_iam_role.app";
+  "aws_iam_policy_attachment.app_ssm_managed" -> "aws_iam_role.app";
+  "aws_iam_role.app" -> "data.aws_iam_policy_document.ec2_assume_role";
+  "aws_internet_gateway.main" -> "module.vpc_main.aws_vpc.main";
+  "aws_launch_template.app" -> "data.aws_ami.app";
+  "aws_launch_template.app" -> "aws_iam_instance_profile.app_ec2_profile";
+  "aws_launch_template.app" -> "aws_key_pair.keypair";
+  "aws_launch_template.app" -> "aws_security_group.app_sg";
+  "aws_launch_template.app" -> "aws_security_group.opmng_sg";
+  "aws_lb.alb" -> "aws_security_group.web_sg";
+  "aws_lb.alb" -> "module.vpc_main.aws_subnet.public";
+  "aws_lb_listener.alb_listener_http" -> "aws_lb.alb";
+  "aws_lb_listener.alb_listener_http" -> "aws_lb_target_group.alb_target_group";
+  "aws_lb_listener.alb_listener_https" -> "data.terraform_remote_state.shared";
+  "aws_lb_listener.alb_listener_https" -> "aws_lb.alb";
+  "aws_lb_listener.alb_listener_https" -> "aws_lb_target_group.alb_target_group";
+  "aws_lb_target_group.alb_target_group" -> "module.vpc_main.aws_vpc.main";
+  "aws_route.public_igw_main" -> "aws_internet_gateway.main";
+  "aws_route.public_igw_main" -> "aws_route_table.public_rt";
+  "aws_route53_record.cf" -> "aws_cloudfront_distribution.cf";
+  "aws_route53_record.elb_origin" -> "data.terraform_remote_state.shared";
+  "aws_route53_record.elb_origin" -> "aws_lb.alb";
+  "aws_route_table.private_rt" -> "module.vpc_main.aws_vpc.main";
+  "aws_route_table.public_rt" -> "module.vpc_main.aws_vpc.main";
+  "aws_route_table_association.private_rt_a" -> "aws_route_table.private_rt";
+  "aws_route_table_association.private_rt_a" -> "module.vpc_main.aws_subnet.private";
+  "aws_route_table_association.private_rt_c" -> "aws_route_table.private_rt";
+  "aws_route_table_association.private_rt_c" -> "module.vpc_main.aws_subnet.private";
+  "aws_route_table_association.public_rt_a" -> "aws_route_table.public_rt";
+  "aws_route_table_association.public_rt_a" -> "module.vpc_main.aws_subnet.public";
+  "aws_route_table_association.public_rt_c" -> "aws_route_table.public_rt";
+  "aws_route_table_association.public_rt_c" -> "module.vpc_main.aws_subnet.public";
+  "aws_s3_bucket_policy.public_deploy" -> "data.aws_iam_policy_document.public_deploy";
+  "aws_s3_bucket_policy.public_deploy" -> "aws_s3_bucket_public_access_block.public_deploy";
+  "aws_s3_bucket_policy.public_deploy" -> "aws_s3_bucket_versioning.public_deploy";
+  "aws_s3_bucket_policy.public_static" -> "data.aws_iam_policy_document.public_static";
+  "aws_s3_bucket_policy.public_static" -> "aws_s3_bucket_public_access_block.public_static";
+  "aws_s3_bucket_policy.public_static" -> "aws_s3_bucket_versioning.public_static";
+  "aws_s3_bucket_public_access_block.public_deploy" -> "aws_s3_bucket.public_deploy";
+  "aws_s3_bucket_public_access_block.public_static" -> "aws_s3_bucket.public_static";
+  "aws_s3_bucket_versioning.public_deploy" -> "aws_s3_bucket.public_deploy";
+  "aws_s3_bucket_versioning.public_static" -> "aws_s3_bucket.public_static";
+  "aws_security_group.app_sg" -> "module.vpc_main.aws_vpc.main";
+  "aws_security_group.db_sg" -> "module.vpc_main.aws_vpc.main";
+  "aws_security_group.opmng_sg" -> "module.vpc_main.aws_vpc.main";
+  "aws_security_group.web_sg" -> "module.vpc_main.aws_vpc.main";
+  "aws_security_group_rule.app_in_http" -> "aws_security_group.app_sg";
+  "aws_security_group_rule.app_in_http" -> "aws_security_group.web_sg";
+  "aws_security_group_rule.app_out_http" -> "data.aws_prefix_list.s3_lp";
+  "aws_security_group_rule.app_out_http" -> "aws_security_group.app_sg";
+  "aws_security_group_rule.app_out_https" -> "data.aws_prefix_list.s3_lp";
+  "aws_security_group_rule.app_out_https" -> "aws_security_group.app_sg";
+  "aws_security_group_rule.app_out_tcp3306" -> "aws_security_group.app_sg";
+  "aws_security_group_rule.app_out_tcp3306" -> "aws_security_group.db_sg";
+  "aws_security_group_rule.db_in_tcp3306" -> "aws_security_group.app_sg";
+  "aws_security_group_rule.db_in_tcp3306" -> "aws_security_group.db_sg";
+  "aws_security_group_rule.opmng_in_ssh" -> "aws_security_group.opmng_sg";
+  "aws_security_group_rule.opmng_out_http" -> "aws_security_group.opmng_sg";
+  "aws_security_group_rule.opmng_out_https" -> "aws_security_group.opmng_sg";
+  "aws_security_group_rule.web_in_http" -> "aws_security_group.web_sg";
+  "aws_security_group_rule.web_in_https" -> "aws_security_group.web_sg";
+  "aws_security_group_rule.web_out_http" -> "aws_security_group.app_sg";
+  "aws_security_group_rule.web_out_http" -> "aws_security_group.web_sg";
+  "module.vpc_main.aws_subnet.private" -> "module.vpc_main.aws_vpc.main";
+  "module.vpc_main.aws_subnet.public" -> "module.vpc_main.aws_vpc.main";
+}
