@@ -19,10 +19,10 @@ resource "aws_key_pair" "keypair" {
 # Launch template
 # ====================================================
 resource "aws_launch_template" "app" {
-  name                   = "${var.project}-${var.environment}-app-launch-template"
-  image_id               = data.aws_ami.app.id
-  instance_type          = var.ec2_instance_type
-  key_name               = aws_key_pair.keypair.key_name
+  name          = "${var.project}-${var.environment}-app-launch-template"
+  image_id      = data.aws_ami.app.id
+  instance_type = var.ec2_instance_type
+  key_name      = aws_key_pair.keypair.key_name
 
   iam_instance_profile {
     name = aws_iam_instance_profile.app_ec2_profile.name
