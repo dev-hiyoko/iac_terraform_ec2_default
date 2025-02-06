@@ -81,6 +81,11 @@ resource "aws_cloudfront_distribution" "cf" {
     minimum_protocol_version = "TLSv1.2_2019"
     ssl_support_method       = "sni-only"
   }
+
+  depends_on = [
+    aws_s3_bucket_policy.public_static,
+    aws_cloudfront_origin_access_identity.cf_s3_origin_access_identity
+  ]
 }
 
 resource "aws_cloudfront_origin_access_identity" "cf_s3_origin_access_identity" {
