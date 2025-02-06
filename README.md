@@ -1,8 +1,7 @@
 # terraform EC2 sample
 
 <!--
-TODO narikawa 構成図を作成
-TODO narikawa code pipeline(terraformソースとappソースそれぞれ)
+TODO narikawa 構成図を作成(Pluralith)
 TODO narikawa ローカル、git actions の terraform のバージョン統一方法（github のビルド用のフローが必要？）
 TODO narikawa plan apply の運用についての考えをまとめる(varsやtfstateやkeypairの管理方法)
 -->
@@ -65,36 +64,30 @@ macos/zsh
 
 9. ドメインのネームサーバーをroute53のものに変更する
 
-10. ドメインの検証設定を変更する
-
-   ***※ 9のネームサーバー変更が確認できてから実行する***
-   
-   ```shell
-   cp ./example/terraform/shared/acm_valid.tf ./aws/services/hiyoko/shared/
-   make terraform hiyoko shared apply -- -auto-approve
-   ```
-
-   ドメイン取得サイトで検証用のCNAMEを設定する。  
-   ***※ 確認できない限り処理が終了しない***
-
-11. develop環境の実行
+10. develop環境の実行
 
    ```shell
    make terraform hiyoko develop apply -- -auto-approve
    ```
 
-12. init/fmt/plan/apply/destroyサンプル
+11. init/fmt/plan/apply/destroyサンプル
 
    実行スクリプトのサンプル
    
    ```shell
    make terraform hiyoko shared apply -- -auto-approve
    make terraform hiyoko develop refresh
-   make terraform hiyoko develop graph > sample.dot
    make terraform hiyoko develop fmt -- -recursive
    make terraform hiyoko develop plan
    make terraform hiyoko develop apply -- -auto-approve
    make terraform hiyoko develop destroy -- -auto-approve
+   ```
+
+12. 構成図生成
+
+   native
+   ```shell
+   make terraform hiyoko develop graph > ./docs/structure-graph/graph.dot
    ```
 
 ## ドキュメント
