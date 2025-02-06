@@ -31,7 +31,6 @@ sudo chown -R root:nginx storage && sudo chown -R root:nginx bootstrap/cache
 # goテスト example/nginx-conf/nginx.proxy.conf
 # ######################
 mkdir -p ~/go/src/hello
-cd ~/go/src/hello
 
 cat <<EOF > main.go
 package main

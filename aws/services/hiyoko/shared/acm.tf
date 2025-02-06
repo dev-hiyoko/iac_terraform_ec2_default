@@ -19,3 +19,7 @@ resource "aws_acm_certificate" "tokyo" {
     aws_route53_zone.main
   ]
 }
+
+output "aws_acm_certificate_tokyo_arn" {
+  value = aws_acm_certificate.tokyo.arn
+}
