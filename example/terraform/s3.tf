@@ -20,8 +20,8 @@ data "aws_iam_policy_document" "public_static" {
     actions   = ["s3:GetObject"]
     resources = ["${aws_s3_bucket.public_static.arn}/*"]
     principals {
-      type        = "*"
-      identifiers = ["*"]
+      type        = "AWS"
+      identifiers = [aws_cloudfront_origin_access_identity.cf_s3_origin_access_identity.iam_arn]
     }
   }
 }
@@ -31,7 +31,7 @@ resource "aws_s3_bucket_public_access_block" "public_static" {
   block_public_acls       = true
   block_public_policy     = false
   ignore_public_acls      = true
-  restrict_public_buckets = false
+  restrict_public_buckets = true
 }
 
 resource "aws_s3_bucket_policy" "public_static" {

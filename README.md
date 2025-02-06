@@ -46,7 +46,15 @@ macos/zsh
    - [terraform.tfvars.example](./aws/services/hiyoko/develop/terraform.tfvars.example)
    - [variables.tf](./aws/services/hiyoko/develop/variables.tf)
 
-7. db instance ファイルの設定
+7. 共通環境実行
+
+   ```shell
+   make terraform hiyoko shared apply -- -auto-approve
+   ```
+
+8. ドメインのネームサーバーをroute53のものに変更する
+
+9. db instance ファイルの設定
 
    RDS か EC2 on MySQL を選択する
 
@@ -56,21 +64,22 @@ macos/zsh
    cp ./example/terraform/rds.tf ./aws/services/hiyoko/develop/
    ```
 
-8. 共通環境実行
+10. s3ファイルの設定
 
-   ```shell
-   make terraform hiyoko shared apply -- -auto-approve
-   ```
+    サンプルはpublic用とdeploy用のものを作っている
 
-9. ドメインのネームサーバーをroute53のものに変更する
+    ```shell
+    cp -f ./example/terraform/s3.tf ./aws/services/hiyoko/develop/
+    cp -f ./example/terraform/cloudfront_s3.tf ./aws/services/hiyoko/develop/cloudfront.tf
+    ```
 
-10. develop環境の実行
+11. develop環境の実行
 
    ```shell
    make terraform hiyoko develop apply -- -auto-approve
    ```
 
-11. init/fmt/plan/apply/destroyサンプル
+12. init/fmt/plan/apply/destroyサンプル
 
    実行スクリプトのサンプル
    
@@ -83,7 +92,7 @@ macos/zsh
    make terraform hiyoko develop destroy -- -auto-approve
    ```
 
-12. 構成図生成
+13. 構成図生成
 
    native
    ```shell
