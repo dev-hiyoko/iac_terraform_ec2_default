@@ -1,7 +1,6 @@
 # terraform EC2 sample
 
 <!--
-TODO narikawa 構成図を作成(Pluralith)
 TODO narikawa ローカル、git actions の terraform のバージョン統一方法（github のビルド用のフローが必要？）
 TODO narikawa plan apply の運用についての考えをまとめる(varsやtfstateやkeypairの管理方法)
 -->
@@ -44,8 +43,8 @@ macos/zsh
 
    必要な場合作成する(下記参考)
 
-    - [terraform.tfvars.example](./aws/services/hiyoko/develop/terraform.tfvars.example)
-    - [variables.tf](./aws/services/hiyoko/develop/variables.tf)
+   - [terraform.tfvars.example](./aws/services/hiyoko/develop/terraform.tfvars.example)
+   - [variables.tf](./aws/services/hiyoko/develop/variables.tf)
 
 7. 共通環境実行
 
@@ -67,59 +66,59 @@ macos/zsh
 
 10. s3 ファイルの設定
 
-   サンプルは public 用と deploy 用のものを作っている
-   
-   ```shell
-   cp -f ./example/terraform/s3.tf ./aws/services/hiyoko/develop/
-   cp -f ./example/terraform/cloudfront_s3.tf ./aws/services/hiyoko/develop/cloudfront.tf
-   ```
+    サンプルは public 用と deploy 用のものを作っている
+
+    ```shell
+    cp -f ./example/terraform/s3.tf ./aws/services/hiyoko/develop/
+    cp -f ./example/terraform/cloudfront_s3.tf ./aws/services/hiyoko/develop/cloudfront.tf
+    ```
 
 11. develop 環境の実行
 
-   ```shell
-   make terraform hiyoko develop apply -- -auto-approve
-   ```
+    ```shell
+    make terraform hiyoko develop apply -- -auto-approve
+    ```
 
 12. init/fmt/plan/apply/destroy サンプル
 
-   実行スクリプトのサンプル
+    実行スクリプトのサンプル
 
-   ```shell
-   make terraform hiyoko shared apply -- -auto-approve
-   make terraform hiyoko develop refresh
-   make terraform hiyoko develop fmt -- -recursive
-   make terraform hiyoko develop plan
-   make terraform hiyoko develop apply -- -auto-approve
-   make terraform hiyoko develop destroy -- -auto-approve
-   ```
+    ```shell
+    make terraform hiyoko shared apply -- -auto-approve
+    make terraform hiyoko develop refresh
+    make terraform hiyoko develop fmt -- -recursive
+    make terraform hiyoko develop plan
+    make terraform hiyoko develop apply -- -auto-approve
+    make terraform hiyoko develop destroy -- -auto-approve
+    ```
 
 13. 構成図生成
 
-   native
-   
-   ```shell
-   make terraform hiyoko develop graph > ./docs/structure-graph/graph.dot
-   ```
+    native
 
-   (pluralith)[https://app.pluralith.com]  
-   apikeyを取得する  
-   ```shell
-   pluralith login --api-key <apikey>
-   pluralith graph
-   ```
+    ```shell
+    make terraform hiyoko develop graph > ./docs/structure-graph/graph.dot
+    ```
 
+    [pluralith](https://app.pluralith.com)  
+     apikey を取得する
+
+    ```shell
+    pluralith login --api-key <apikey>
+    pluralith graph
+    ```
 
 14. IAM ユーザーの作成
 
-   ```shell
-   brew install gpg
-   gpg --gen-key
-   gpg --list-keys
-   mkdir ./aws/services/hiyoko/.cert
-   gpg -o ./aws/services/hiyoko/.cert/master.public.gpg --export <realname>
-   ```
-   
-   ./aws/services/hiyoko/shared/iam_user.tf ファイルでユーザーを追加する
+    ```shell
+    brew install gpg
+    gpg --gen-key
+    gpg --list-keys
+    mkdir ./aws/services/hiyoko/.cert
+    gpg -o ./aws/services/hiyoko/.cert/master.public.gpg --export <realname>
+    ```
+
+    ./aws/services/hiyoko/shared/iam_user.tf ファイルでユーザーを追加する
 
 ## ドキュメント
 
