@@ -43,8 +43,9 @@ macos/zsh
 6. .tfvars ファイルの設定(任意)
 
    必要な場合作成する(下記参考)
-   - [terraform.tfvars.example](./aws/services/hiyoko/develop/terraform.tfvars.example)
-   - [variables.tf](./aws/services/hiyoko/develop/variables.tf)
+
+    - [terraform.tfvars.example](./aws/services/hiyoko/develop/terraform.tfvars.example)
+    - [variables.tf](./aws/services/hiyoko/develop/variables.tf)
 
 7. 共通環境実行
 
@@ -52,7 +53,7 @@ macos/zsh
    make terraform hiyoko shared apply -- -auto-approve
    ```
 
-8. ドメインのネームサーバーをroute53のものに変更する
+8. ドメインのネームサーバーを route53 のものに変更する
 
 9. db instance ファイルの設定
 
@@ -64,25 +65,25 @@ macos/zsh
    cp ./example/terraform/rds.tf ./aws/services/hiyoko/develop/
    ```
 
-10. s3ファイルの設定
+10. s3 ファイルの設定
 
-    サンプルはpublic用とdeploy用のものを作っている
+   サンプルは public 用と deploy 用のものを作っている
+   
+   ```shell
+   cp -f ./example/terraform/s3.tf ./aws/services/hiyoko/develop/
+   cp -f ./example/terraform/cloudfront_s3.tf ./aws/services/hiyoko/develop/cloudfront.tf
+   ```
 
-    ```shell
-    cp -f ./example/terraform/s3.tf ./aws/services/hiyoko/develop/
-    cp -f ./example/terraform/cloudfront_s3.tf ./aws/services/hiyoko/develop/cloudfront.tf
-    ```
-
-11. develop環境の実行
+11. develop 環境の実行
 
    ```shell
    make terraform hiyoko develop apply -- -auto-approve
    ```
 
-12. init/fmt/plan/apply/destroyサンプル
+12. init/fmt/plan/apply/destroy サンプル
 
    実行スクリプトのサンプル
-   
+
    ```shell
    make terraform hiyoko shared apply -- -auto-approve
    make terraform hiyoko develop refresh
@@ -95,11 +96,20 @@ macos/zsh
 13. 構成図生成
 
    native
+   
    ```shell
    make terraform hiyoko develop graph > ./docs/structure-graph/graph.dot
    ```
 
-14. IAMユーザーの作成
+   (pluralith)[https://app.pluralith.com]  
+   apikeyを取得する  
+   ```shell
+   pluralith login --api-key <apikey>
+   pluralith graph
+   ```
+
+
+14. IAM ユーザーの作成
 
    ```shell
    brew install gpg
